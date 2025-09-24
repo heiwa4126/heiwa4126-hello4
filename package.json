@@ -29,8 +29,8 @@
 		"test:run": "vitest run",
 		"clean": "rm -rf dist",
 		"prepublishOnly": "npm run clean && npm run build && npm run test:run",
-		"format": "biome format --write --verbose .",
-		"format:full": "biome format --write . && dprint fmt  && textlint --fix \"**/*.md\""
+		"format": "biome format --write .",
+		"format:full": "biome format --write . && dprint fmt && textlint --fix \"**/*.md\""
 	},
 	"keywords": [
 		"typescript",
@@ -39,7 +39,11 @@
 		"commonjs",
 		"cli"
 	],
-	"author": "heiwa4126",
+	"author": "heiwa4126 <heiwa4126@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/heiwa4126/heiwa4126-hello4.git"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^20.0.0",
