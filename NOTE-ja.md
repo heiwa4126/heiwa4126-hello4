@@ -14,8 +14,7 @@ npm プロジェクトを 署名付きで npmjs に公開する練習プロジ�
 3. GitHub Actions から Trusted publishing で npm にパブリッシュする
    - たぶん `npm publish` の段階で Sigstore 署名がついてしまう
    - suzuki-shunsuke/pinact, rhysd/actionlint, nektos/act などを使う (あと aquaproj/aqua)
-4. prepatch から patch までバージョンをあげて npm にパブリッシュする workflow を書く
-5. ドキュメントをまとめる
+4. ドキュメントをまとめる
 
 ## 手動でパブリッシュ
 
@@ -32,7 +31,7 @@ npm login --auth-type=web # 動作チェック
 で、
 
 ```sh
-npm publish --access public --tag alpha
+npm publish --access public
 # run-scripts の `prepublishOnly` が先に実行される
 ```
 

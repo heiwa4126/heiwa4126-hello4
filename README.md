@@ -1,5 +1,10 @@
 # @heiwa4126/hello4
 
+[![npm version](https://img.shields.io/npm/v/@heiwa4126/hello4.svg)](https://www.npmjs.com/package/@heiwa4126/hello4)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+
 TypeScript hello world library with dual ES modules/CommonJS support.
 
 ## Installation
@@ -79,3 +84,8 @@ The project builds to both ES modules and CommonJS formats:
 ## License
 
 MIT
+
+## Note
+
+これがこのプロジェクトの本体。[NOTE-ja.md](NOTE-ja.md)\
+( [GitHub レポジトリ](https://github.com/heiwa4126/heiwa4126-hello4?tab=readme-ov-file#note) 上で見てください。PyPI 上だとリンク切れ)
