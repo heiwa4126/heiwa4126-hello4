@@ -14,7 +14,7 @@
 		}
 	},
 	"bin": {
-		"heiwa4126-hello4": "./dist/esm/main.js"
+		"heiwa4126-hello4": "dist/esm/main.js"
 	},
 	"files": [
 		"dist/**/*.js",
@@ -28,6 +28,7 @@
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"rename-cjs": "find dist/cjs -name '*.js' -exec sh -c 'mv \"$1\" \"${1%.js}.cjs\"' _ {} \\;",
 		"set-permissions": "chmod +x dist/esm/main.js",
+		"test:watch": "vitest",
 		"test": "vitest run",
 		"test:run": "vitest run",
 		"clean": "rm -rf dist",
@@ -48,7 +49,7 @@
 	"author": "heiwa4126 <heiwa4126@gmail.com>",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/heiwa4126/heiwa4126-hello4.git"
+		"url": "git+https://github.com/heiwa4126/heiwa4126-hello4.git"
 	},
 	"license": "MIT",
 	"devDependencies": {

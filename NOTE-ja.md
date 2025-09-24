@@ -24,6 +24,7 @@ npm の Trusted Publishing は 「初回の手動 publish を完全にスキッ�
 まずテストを手動で
 
 ```sh
+npm pkg fix
 npm run lint
 npm run test
 npm build
@@ -34,7 +35,7 @@ npm login --auth-type=web # 動作チェック
 で、
 
 ```sh
-npm publish --access public
+npm publish --access public --tag latest
 # run-scripts の `prepublishOnly` が先に実行される
 ```
 

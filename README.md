@@ -77,8 +77,8 @@ The project builds to both ES modules and CommonJS formats:
 - `npm run build` - Build both ESM and CJS versions
 - `npm run build:esm` - Build ES modules only
 - `npm run build:cjs` - Build CommonJS only
-- `npm test` - Run tests in watch mode
-- `npm run test:run` - Run tests once
+- `npm run test:watch` - Run tests in watch mode
+- `npm test` - Run tests once
 - `npm run clean` - Remove build artifacts
 
 ## License
@@ -88,4 +88,4 @@ MIT
 ## Note
 
 これがこのプロジェクトの本体。[NOTE-ja.md](NOTE-ja.md)\
-( [GitHub レポジトリ](https://github.com/heiwa4126/heiwa4126-hello4?tab=readme-ov-file#note) 上で見てください。PyPI 上だとリンク切れ)
+( [GitHub レポジトリ](https://github.com/heiwa4126/heiwa4126-hello4?tab=readme-ov-file#note) 上で見てください。npm 上だとリンク切れ)
