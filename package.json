@@ -1,0 +1,51 @@
+{
+	"name": "@heiwa4126/hello4",
+	"version": "0.0.1",
+	"description": "TypeScript hello world library with dual ES modules/CommonJS support",
+	"type": "module",
+	"main": "./dist/cjs/hello.cjs",
+	"module": "./dist/esm/hello.js",
+	"types": "./dist/esm/hello.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/esm/hello.js",
+			"require": "./dist/cjs/hello.cjs",
+			"types": "./dist/esm/hello.d.ts"
+		}
+	},
+	"bin": {
+		"heiwa4126-hello4": "./dist/esm/main.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "npm run build:esm && npm run build:cjs && npm run rename-cjs && npm run set-permissions",
+		"build:esm": "tsc -p tsconfig.esm.json",
+		"build:cjs": "tsc -p tsconfig.cjs.json",
+		"rename-cjs": "find dist/cjs -name '*.js' -exec sh -c 'mv \"$1\" \"${1%.js}.cjs\"' _ {} \\;",
+		"set-permissions": "chmod +x dist/esm/main.js",
+		"test": "vitest run",
+		"test:run": "vitest run",
+		"clean": "rm -rf dist",
+		"prepublishOnly": "npm run clean && npm run build && npm run test:run",
+		"format": "biome format --config-path=$HOME/biome.json --write . && dprint fmt  && textlint --fix \"**/*.md\""
+	},
+	"keywords": [
+		"typescript",
+		"hello-world",
+		"esm",
+		"commonjs",
+		"cli"
+	],
+	"author": "heiwa4126",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"typescript": "^5.0.0",
+		"vitest": "^1.0.0"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}
