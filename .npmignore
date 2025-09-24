@@ -1,0 +1,18 @@
+# Source maps
+*.map
+**/*.map
+
+# Development files
+src/
+test/
+*.test.*
+*.spec.*
+
+# Config files
+tsconfig*.json
+vite.config.*
+biome.jsonc
+.biomeignore
+
+# Documentation and notes
+NOTE-ja.md
