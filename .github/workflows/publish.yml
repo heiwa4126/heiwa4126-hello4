@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
+          always-auth: true
 
       # Ensure npm 11.5.1 or later is installed
       - name: Update npm
@@ -41,6 +42,11 @@ jobs:
 
       - name: Debug npm whoami
         run: npm whoami || echo "Not authenticated"
+
+      - name: Configure npm for publishing
+        run: |
+          npm config delete always-auth 2>/dev/null || true
+          npm config list
 
       - name: Publish to npm
         run: npm publish --provenance --access public
