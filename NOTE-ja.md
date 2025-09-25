@@ -80,6 +80,13 @@ Publishing access:
 [publish.yml](.github/workflows/publish.yml)
 を書きました。
 
+## Sigstore 証明がつくと
+
+[npm のプロジェクトのページで](https://www.npmjs.com/package/@heiwa4126/hello4)
+
+- バージョンの横にチェックマークがつく (PyPI のチェックマークにはあまり意味がない)
+- ページの底に "Provenance" の節が付く。Rekor へのリンクなど。
+
 ## その後
 
 いろいろ改造
