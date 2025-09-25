@@ -2,7 +2,7 @@
 
 ## これは何か
 
-npm プロジェクトを 署名付きで npmjs に公開する練習プロジェクト。
+npm プロジェクトを署名付きで npmjs に公開する練習プロジェクト。
 中身は "Hello!"を返す hello()関数だけ。
 
 ## 作った手順
@@ -56,6 +56,26 @@ export BROWSER=wslview
 
 npm の該当プロジェクトの setting で
 
+Trusted Publisher の Select your publisher で GitHub Actions ボタン。
+
+- Organization or user: heiwa4126
+- Repository: heiwa4126-hello4
+- Workflow filename: publish.yml
+- Environment name: npmjs
+
+"setup connection" ボタン押す。
+
+あとその下の
+
 Publishing access:
 
 - ✅Require two-factor authentication and disallow tokens (recommended)
+
+にしといたほうが安全かも。
+
+## workflow 書く
+
+[Trusted publishing for npm packages | npm Docs](https://docs.npmjs.com/trusted-publishers#github-actions-configuration)
+を参考に
+[publish.yml](.github/workflows/publish.yml)
+を書きました。
