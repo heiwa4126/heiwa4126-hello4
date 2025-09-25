@@ -59,9 +59,9 @@ npm の該当プロジェクトの setting で
 Trusted Publisher の Select your publisher で GitHub Actions ボタン。
 
 - Organization or user: heiwa4126
-- Repository: h4-hello
+- Repository: heiwa4126-hello4
 - Workflow filename: publish.yml
-- Environment name: npmjs
+- Environment name: (最初は空で)
 
 "setup connection" ボタン押す。
 
