@@ -50,11 +50,9 @@ jobs:
           VERSION=$(npm pkg get version --silent | tr -d '"')
           # ハイフン(SemVerのprerelease区切り)が含まれているかで判定
           if [[ $VERSION == *-* ]]; then
-            is_prerelease=true
-            tag_option="--tag dev"
+            is_prerelease=true;  tag_option="--tag dev"
           else
-            is_prerelease=false
-            tag_option=""
+            is_prerelease=false; tag_option=""
           fi
           # まとめて GITHUB_OUTPUT に書き出す
           {

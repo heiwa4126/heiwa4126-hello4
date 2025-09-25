@@ -79,3 +79,11 @@ Publishing access:
 を参考に
 [publish.yml](.github/workflows/publish.yml)
 を書きました。
+
+## その後
+
+いろいろ改造
+
+- Environment name: npmjs にした
+- オーナーだけ publish できるようにした
+- prerelease (semver 中に`-`がある) 対応した

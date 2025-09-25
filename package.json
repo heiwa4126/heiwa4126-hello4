@@ -1,7 +1,7 @@
 {
 	"name": "@heiwa4126/hello4",
 	"version": "0.0.9",
-	"description": "TypeScript hello world library with dual ES modules/CommonJS support",
+	"description": "TypeScript hello world library with dual ES modules/CommonJS support. Features GitHub Actions trusted publishing to npmjs with Sigstore attestation.",
 	"type": "module",
 	"main": "./dist/cjs/hello.cjs",
 	"module": "./dist/esm/hello.js",
