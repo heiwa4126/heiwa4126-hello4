@@ -27,6 +27,9 @@ jobs:
       - name: Update npm
         run: npm install -g npm@latest
 
+      - name: Check npm version
+        run: npm --version
+
       - name: Install dependencies
         run: npm ci
 
@@ -36,5 +39,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug npm whoami
+        run: npm whoami || echo "Not authenticated"
+
       - name: Publish to npm
-        run: npm publish --tag latest
+        run: npm publish --provenance --access public

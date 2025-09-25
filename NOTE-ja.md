@@ -59,7 +59,7 @@ npm の該当プロジェクトの setting で
 Trusted Publisher の Select your publisher で GitHub Actions ボタン。
 
 - Organization or user: heiwa4126
-- Repository: heiwa4126-hello4
+- Repository: h4-hello
 - Workflow filename: publish.yml
 - Environment name: npmjs
 
