@@ -35,7 +35,7 @@
 		"prepublishOnly": "npm run clean && npm run build && npm run test:run",
 		"lint": "biome lint .",
 		"format": "biome format --write .",
-		"format:full": "biome format --write . && dprint fmt && textlint --fix \"**/*.md\""
+		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\""
 	},
 	"keywords": [
 		"hello-world",

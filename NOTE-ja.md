@@ -86,4 +86,6 @@ Publishing access:
 
 - Environment name: npmjs にした
 - オーナーだけ publish できるようにした
-- prerelease (semver 中に`-`がある) 対応した
+- prerelease (semver 中に`-`がある場合) 対応した。
+  prerelease だと npm 上で dev タグになる。
+  それ以外は latest
