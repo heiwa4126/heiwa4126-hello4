@@ -39,12 +39,34 @@ jobs:
 
       - name: Install dependencies (npm ci)
         run: npm ci
+
       # - run: npm run build --if-present
       # - run: npm test
       ## このプロジェクトでは prepublishOnly に書いてあるので不要
 
+      - name: Check if prerelease version
+        id: check-prerelease
+        run: |
+          VERSION=$(npm pkg get version --silent | tr -d '"')
+          # ハイフン(SemVerのprerelease区切り)が含まれているかで判定
+          if [[ $VERSION == *-* ]]; then
+            is_prerelease=true
+            tag_option="--tag dev"
+          else
+            is_prerelease=false
+            tag_option=""
+          fi
+          # まとめて GITHUB_OUTPUT に書き出す
+          {
+            echo "is_prerelease=$is_prerelease"
+            echo "tag_option=$tag_option"
+          } >> "$GITHUB_OUTPUT"
+          # ログ用出力
+          echo "Version: $VERSION"
+          echo "Is prerelease: $is_prerelease"
+
       - name: Publish to npm via OIDC (Trusted publishing)
         env:
           NODE_AUTH_TOKEN: "" # 念のため publish 前も空
-        run: npm publish --access public
+        run: npm publish --access public ${{ steps.check-prerelease.outputs.tag_option }}
         # Trusted publishing を使うと provenance は自動生成されるので --provenance は不要
