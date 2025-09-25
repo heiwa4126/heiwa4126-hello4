@@ -11,6 +11,8 @@ concurrency:
 
 jobs:
   publish:
+    # Only run if pushed by repository owner
+    if: github.repository_owner == github.actor
     runs-on: ubuntu-latest
     environment: npmjs
     permissions:
