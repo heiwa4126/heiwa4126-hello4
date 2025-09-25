@@ -1,6 +1,6 @@
 {
 	"name": "@heiwa4126/hello4",
-	"version": "0.0.8-0",
+	"version": "0.0.8",
 	"description": "TypeScript hello world library with dual ES modules/CommonJS support",
 	"type": "module",
 	"main": "./dist/cjs/hello.cjs",
