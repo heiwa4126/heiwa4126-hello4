@@ -65,14 +65,6 @@ Trusted Publisher の Select your publisher で GitHub Actions ボタン。
 
 "setup connection" ボタン押す。
 
-あとその下の
-
-Publishing access:
-
-- ✅Require two-factor authentication and disallow tokens (recommended)
-
-にしといたほうが安全かも。
-
 ## workflow 書く
 
 [Trusted publishing for npm packages | npm Docs](https://docs.npmjs.com/trusted-publishers#github-actions-configuration)
@@ -91,8 +83,43 @@ Publishing access:
 
 いろいろ改造
 
-- Environment name: npmjs にした
-- オーナーだけ publish できるようにした
+- Environment name: `npmjs` にした
+- workflow 中に条件入れて、オーナーだけ publish できるようにした
 - prerelease (semver 中に`-`がある場合) 対応した。
   prerelease だと npm 上で dev タグになる。
   それ以外は latest
+- on.push.tags のところ、少し厳密に。以下参考
+  - [on\.push\.<branches\|tags\|branches\-ignore\|tags\-ignore>](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore)
+  - [フィルター パターンのチート シート](https://docs.github.com/ja/actions/reference/workflows-and-actions/workflow-syntax#filter-pattern-cheat-sheet)
+
+## 今後ローカルから直接 npmjs に発行できないようにしたい
+
+「トークン発行を禁止+ 2FA 必須」にしてローカル publish を塞ぐのがよい。
+
+npm の該当プロジェクトの setting の Publishing access で
+
+- ✅Require two-factor authentication and disallow tokens (recommended)
+
+あと package.json の run scrips の prepublishOnly に "CI じゃない場合はエラーになる" コードを書くのも予防的にあり(今回はやってない)。
+
+```json
+{
+  "scripts": {
+    "prepublishOnly": "node scripts/check-ci.js"
+  }
+}
+```
+
+で、
+
+```js
+// scripts/check-ci.js
+if (!process.env.CI && !process.env.GITHUB_ACTIONS) {
+  console.error("⛔ Local publish is disabled. Please use GitHub Actions (Trusted publishing).");
+  process.exit(1);
+} else {
+  console.log("✅ CI環境からの publish を検出しました。続行します。");
+}
+```
+
+こんな感じ。

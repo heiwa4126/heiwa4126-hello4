@@ -44,7 +44,11 @@
 		"typescript",
 		"esm",
 		"commonjs",
-		"cli"
+		"cli",
+		"learning",
+		"sigstore",
+		"trusted-publishing",
+		"github-actions"
 	],
 	"author": "heiwa4126 <heiwa4126@gmail.com>",
 	"repository": {
