@@ -87,5 +87,5 @@ MIT
 
 ## Note
 
-[NOTE-ja.md](https://github.com/heiwa4126/heiwa4126-hello4/blob/main/NOTE-ja.md) (GitHub)
+[NOTE-ja.md](https://github.com/heiwa4126/heiwa4126-hello4/blob/main/NOTE-ja.md) (at GitHub)
 これがこのプロジェクトの本体。
