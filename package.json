@@ -57,9 +57,9 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "^2.2.4",
-		"@types/node": "^24.5.2",
-		"typescript": "^5.0.0",
+		"@biomejs/biome": "^2.2.6",
+		"@types/node": "^24.8.1",
+		"typescript": "^5.9.3",
 		"vitest": "^3.2.4"
 	},
 	"engines": {

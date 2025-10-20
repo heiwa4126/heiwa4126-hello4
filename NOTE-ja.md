@@ -27,7 +27,7 @@ npm の Trusted Publishing は 「初回の手動 publish を完全にスキッ�
 npm pkg fix
 npm run lint
 npm run test
-npm build
+npm run build
 npm pack --dry-run
 npm login --auth-type=web # 動作チェック
 ```
