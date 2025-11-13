@@ -9,8 +9,8 @@ npm プロジェクトを署名付きで npmjs に公開する練習プロジェ
 
 1. npm パッケージ作る。
    - TypeScript で書いて mjs,cjs としてビルドするタイプ
-   - Test suit は vitest(TypeScript で), formatter/linter は Biome
-2. npm で prepatch バージョンとして公開する(まず手動)。
+   - Test suit は vitest(TypeScript だから), formatter/linter は Biome
+2. npm で prepatch(dev) バージョンとして公開する(まず手動)。
 3. GitHub Actions から Trusted publishing で npm にパブリッシュする
    - たぶん GitHub 上で `npm publish` した段階で Sigstore 署名がついてしまう
    - suzuki-shunsuke/pinact, rhysd/actionlint, nektos/act などを使う (あと aquaproj/aqua)
@@ -35,7 +35,7 @@ npm login --auth-type=web # 動作チェック
 で、
 
 ```sh
-npm publish --access public --tag latest
+npm publish --access public --tag dev
 # run-scripts の `prepublishOnly` が先に実行される
 ```
 
