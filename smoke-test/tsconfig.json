@@ -9,8 +9,7 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
-		"declaration": false,
-		"outDir": "./dist"
+		"noEmit": true
 	},
 	"include": ["tests/**/*"],
 	"exclude": ["node_modules", "dist"]

@@ -19,7 +19,7 @@ echo "📦 Testing CommonJS API..."
 node tests/api-test.cjs
 
 echo "📦 Testing TypeScript API..."
-npx tsx tests/api-test.ts
+../node_modules/.bin/ts-node tests/api-test.ts
 
 echo "🖥️ Testing CLI..."
 ./tests/cli-test.sh
