@@ -1,6 +1,6 @@
 {
 	"name": "@heiwa4126/hello4",
-	"version": "0.0.13-rc.1",
+	"version": "0.0.13-rc.2",
 	"description": "TypeScript hello world library with dual ES modules/CommonJS support. Features GitHub Actions trusted publishing to npmjs with Sigstore attestation.",
 	"type": "module",
 	"main": "./dist/cjs/hello.cjs",
