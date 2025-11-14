@@ -34,11 +34,16 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           token: "" # .npmrc へ token を書かせない(OIDC を確実に使う)
           cache: "npm" # npm のダウンロードキャッシュを有効化
+          # always-auth を明示的に無効化して警告を抑制
+          always-auth: false
       # cache-dependency-path: |
       #   package-lock.json # 複数パスがある場合は明示(monorepo 等)
 
       - name: Use latest npm supporting OIDC provenance
-        run: npm i -g npm@latest # npm を 11.5.1+ に
+        run: |
+          npm i -g npm@latest # npm を 11.5.1+ に
+          # 古い always-auth 設定を削除して警告を抑制
+          npm config delete always-auth --global || true
 
       - name: Install dependencies (npm ci)
         run: npm ci
