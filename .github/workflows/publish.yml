@@ -30,20 +30,15 @@ jobs:
       - name: Setup Node.js (with npm cache)
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org"
-          token: "" # .npmrc へ token を書かせない(OIDC を確実に使う)
+          node-version: "22"
           cache: "npm" # npm のダウンロードキャッシュを有効化
-          # always-auth を明示的に無効化して警告を抑制
-          always-auth: false
+      # registry-url を指定しない = .npmrc を作成させない
+      # Trusted Publishing では認証設定は不要
       # cache-dependency-path: |
       #   package-lock.json # 複数パスがある場合は明示(monorepo 等)
 
       - name: Use latest npm supporting OIDC provenance
-        run: |
-          npm i -g npm@latest # npm を 11.5.1+ に
-          # 古い always-auth 設定を削除して警告を抑制
-          npm config delete always-auth --global || true
+        run: npm i -g npm@latest # npm を 11.5.1+ に
 
       - name: Install dependencies (npm ci)
         run: npm ci
@@ -72,7 +67,8 @@ jobs:
           echo "Is prerelease: $is_prerelease"
 
       - name: Publish to npm via OIDC (Trusted publishing)
-        env:
-          NODE_AUTH_TOKEN: "" # 念のため publish 前も空
-        run: npm publish --access public ${{ steps.check-prerelease.outputs.tag_option }}
+        run: |
+          # Trusted Publishing では registry 設定も不要
+          npm config set registry https://registry.npmjs.org/
+          npm publish --access public ${{ steps.check-prerelease.outputs.tag_option }}
         # Trusted publishing を使うと provenance は自動生成されるので --provenance は不要
