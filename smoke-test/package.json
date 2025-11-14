@@ -1,8 +1,0 @@
-{
-	"name": "hello4-smoke-test",
-	"private": true,
-	"type": "module",
-	"dependencies": {
-		"@heiwa4126/hello4": "file:../dist"
-	}
-}

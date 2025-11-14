@@ -23,18 +23,17 @@
 		"!dist/**/*.map"
 	],
 	"scripts": {
-		"build": "npm run build:esm && npm run build:cjs && npm run rename-cjs && npm run set-permissions && npm run copy-package-json",
+		"build": "npm run build:esm && npm run build:cjs && npm run rename-cjs && npm run set-permissions",
 		"build:esm": "tsc -p tsconfig.esm.json",
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"rename-cjs": "find dist/cjs -name '*.js' -exec sh -c 'mv \"$1\" \"${1%.js}.cjs\"' _ {} \\;",
 		"set-permissions": "chmod +x dist/esm/main.js",
-		"copy-package-json": "node -e \"const pkg = require('./package.json'); const distPkg = { name: pkg.name, version: pkg.version, description: pkg.description, type: 'module', main: './cjs/hello.cjs', module: './esm/hello.js', types: './esm/hello.d.ts', exports: { '.': { types: './esm/hello.d.ts', import: './esm/hello.js', require: './cjs/hello.cjs' } }, bin: { 'heiwa4126-hello4': './esm/main.js' }, author: pkg.author, license: pkg.license }; require('fs').writeFileSync('./dist/package.json', JSON.stringify(distPkg, null, 2));\"",
-		"test:watch": "vitest",
 		"test": "vitest run",
 		"test:run": "vitest run",
+		"test:watch": "vitest",
 		"clean": "rm -rf dist",
-		"smoke-test": "cd smoke-test && ./run-smoke-test.sh",
-		"prepublishOnly": "npm run clean && npm run build && npm run test:run && npm run smoke-test",
+		"smoke-test": "node examples/test1.mjs && node examples/test2.cjs && tsx examples/test3.ts",
+		"prepublishOnly": "npm run lint && npm run test && npm run clean && npm run build && npm run smoke-test",
 		"lint": "biome lint .",
 		"format": "biome format --write .",
 		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\""
@@ -67,5 +66,8 @@
 	},
 	"engines": {
 		"node": ">=18.0.0"
-	}
+	},
+	"workspaces": [
+		"."
+	]
 }
