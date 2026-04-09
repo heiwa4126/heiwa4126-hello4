@@ -2,6 +2,37 @@
 	"name": "@heiwa4126/hello4",
 	"version": "0.0.14",
 	"description": "TypeScript hello world library with dual ES modules/CommonJS support. Features GitHub Actions trusted publishing to npmjs with Sigstore attestation.",
+	"keywords": [
+		"cli",
+		"commonjs",
+		"demo",
+		"esm",
+		"example",
+		"github-actions",
+		"hello-world",
+		"learning",
+		"sigstore",
+		"trusted-publishing",
+		"typescript"
+	],
+	"license": "MIT",
+	"author": "heiwa4126 <heiwa4126@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/heiwa4126/heiwa4126-hello4.git"
+	},
+	"bin": {
+		"heiwa4126-hello4": "dist/esm/main.js"
+	},
+	"workspaces": [
+		"."
+	],
+	"files": [
+		"dist/**/*.js",
+		"dist/**/*.cjs",
+		"dist/**/*.d.ts",
+		"!dist/**/*.map"
+	],
 	"type": "module",
 	"main": "./dist/cjs/hello.cjs",
 	"module": "./dist/esm/hello.js",
@@ -13,15 +44,6 @@
 			"require": "./dist/cjs/hello.cjs"
 		}
 	},
-	"bin": {
-		"heiwa4126-hello4": "dist/esm/main.js"
-	},
-	"files": [
-		"dist/**/*.js",
-		"dist/**/*.cjs",
-		"dist/**/*.d.ts",
-		"!dist/**/*.map"
-	],
 	"scripts": {
 		"build": "npm run build:esm && npm run build:cjs && npm run rename-cjs",
 		"build:esm": "tsc -p tsconfig.esm.json",
@@ -33,40 +55,20 @@
 		"clean": "rm -rf dist",
 		"smoke-test": "node examples/test1.mjs && node examples/test2.cjs && tsx examples/test3.ts && node dist/esm/main.js",
 		"prepublishOnly": "npm run lint && npm run test && npm run clean && npm run build && npm run smoke-test",
-		"lint": "biome lint .",
-		"format": "biome format --write .",
-		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\""
+		"preinstall": "npm audit",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"check": "oxfmt && oxlint --fix"
 	},
-	"keywords": [
-		"hello-world",
-		"example",
-		"demo",
-		"typescript",
-		"esm",
-		"commonjs",
-		"cli",
-		"learning",
-		"sigstore",
-		"trusted-publishing",
-		"github-actions"
-	],
-	"author": "heiwa4126 <heiwa4126@gmail.com>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/heiwa4126/heiwa4126-hello4.git"
-	},
-	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "^2.2.6",
 		"@types/node": "^25.0.3",
+		"oxfmt": "^0.44.0",
+		"oxlint": "^1.59.0",
 		"tsx": "^4.19.1",
 		"typescript": "^6.0.2",
 		"vitest": "^4.0.8"
 	},
 	"engines": {
 		"node": ">=18.0.0"
-	},
-	"workspaces": [
-		"."
-	]
+	}
 }

@@ -76,8 +76,8 @@ npm run prepublishOnly # lint + test + clean + build + smoke-test
 TypeScript のソースコードでも **`.js` 拡張子を明示**:
 
 ```typescript
-import { hello } from "./hello.js";  // ✓ 正しい
-import { hello } from "./hello";     // ✗ 避ける
+import { hello } from "./hello.js"; // ✓ 正しい
+import { hello } from "./hello"; // ✗ 避ける
 ```
 
 理由: ESM として実行時に正しく解決されるため
